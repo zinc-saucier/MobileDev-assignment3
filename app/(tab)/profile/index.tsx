@@ -202,9 +202,17 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: '#d3d3d3',
     marginLeft: 15,
+    marginRight: 15,
     margin: 5,
     padding: 5,
     borderRadius: 5
   },
-  error: {},
+  error: {
+    backgroundColor: 'red',
+    color: 'white',
+    padding: 5,
+    marginLeft: 15,
+    marginRight: 15,
+    borderRadius: 5
+  },
 });
