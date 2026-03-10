@@ -1,16 +1,15 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { router } from "expo-router";
 import React from "react";
+import { Controller, useForm } from "react-hook-form";
 import {
+  Alert,
+  Pressable,
+  ScrollView,
   StyleSheet,
   Text,
-  View,
-  ScrollView,
   TextInput,
-  Pressable,
-  Alert,
 } from "react-native";
-import { router } from "expo-router";
-import { Controller, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 //app-wide theme file
 //import {theme} from "../../../../styles/theme"
@@ -65,8 +64,8 @@ const form = () => {
     Alert.alert(
       "Form submitted",
       `Employee: ${data.firstName} ${data.lastName}`,
-      [{ text: "OK", onPress: () => router.back() }]
-    )
+      [{ text: "OK", onPress: () => router.back() }],
+    );
   };
 
   return (
@@ -81,7 +80,7 @@ const form = () => {
           <TextInput
             style={[styles.input]}
             placeholder="first name here"
-            placeholderTextColor={""}
+            placeholderTextColor={"gray"}
             value={value}
             onChangeText={onChange}
             autoCapitalize="words"
@@ -100,7 +99,7 @@ const form = () => {
           <TextInput
             style={[styles.input]}
             placeholder="last name here"
-            placeholderTextColor={""}
+            placeholderTextColor={"gray"}
             value={value}
             onChangeText={onChange}
             autoCapitalize="words"
@@ -120,7 +119,7 @@ const form = () => {
           <TextInput
             style={[styles.input]}
             placeholder="example@example.com"
-            placeholderTextColor={""}
+            placeholderTextColor={"gray"}
             value={value}
             onChangeText={onChange}
             keyboardType="email-address"
@@ -139,7 +138,7 @@ const form = () => {
           <TextInput
             style={[styles.input]}
             placeholder="(555) 555-5555"
-            placeholderTextColor={""}
+            placeholderTextColor={"gray"}
             value={value}
             onChangeText={onChange}
             keyboardType="phone-pad"
@@ -157,7 +156,7 @@ const form = () => {
           <TextInput
             style={[styles.input]}
             placeholder="A1B 2C3"
-            placeholderTextColor={""}
+            placeholderTextColor={"gray"}
             value={value}
             onChangeText={onChange}
             autoCapitalize="characters"
@@ -185,8 +184,7 @@ const styles = StyleSheet.create({
     backgroundColor: "violet",
     padding: 10,
     borderRadius: 10,
-    alignSelf: 'flex-start',
-    
+    alignSelf: "flex-start",
   },
   buttonText: {},
   content: {},
@@ -200,19 +198,19 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   input: {
-    backgroundColor: '#d3d3d3',
+    backgroundColor: "#d3d3d3",
     marginLeft: 15,
     marginRight: 15,
     margin: 5,
     padding: 5,
-    borderRadius: 5
+    borderRadius: 5,
   },
   error: {
-    backgroundColor: 'red',
-    color: 'white',
+    backgroundColor: "red",
+    color: "white",
     padding: 5,
     marginLeft: 15,
     marginRight: 15,
-    borderRadius: 5
+    borderRadius: 5,
   },
 });
