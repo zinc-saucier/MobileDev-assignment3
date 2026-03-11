@@ -97,7 +97,7 @@ const form = () => {
             placeholder="last name here"
             placeholderTextColor={"gray"}
             value={value}
-            onChangeText={onChange}5
+            onChangeText={onChange}
             autoCapitalize="words"
           />
         )}
