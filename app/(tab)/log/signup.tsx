@@ -135,7 +135,7 @@ const signup = () => {
       </Pressable>
       <Text>
         Already have an account?
-        <Pressable onPress={() => router.navigate("/(tab)/profile/index")}>
+        <Pressable onPress={() => router.back()}>
           <u>Log In.</u>
         </Pressable>
       </Text>
