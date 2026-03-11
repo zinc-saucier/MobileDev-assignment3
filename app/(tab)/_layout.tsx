@@ -35,6 +35,19 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="log"
+        options={{
+          tabBarLabel: "Login",
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons
+              name={focused ? "cloud" : "cloud-outline"}
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
