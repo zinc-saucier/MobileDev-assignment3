@@ -62,8 +62,8 @@ const signup = () => {
   };
   return (
     <ScrollView>
-      <Text>Create your profile</Text>
-      <Text>Full Name</Text>
+      <Text style={styles.header}>Create your profile</Text>
+      <Text style={styles.label}>Full Name</Text>
       <Controller
         control={control}
         name="fullName"
@@ -79,7 +79,7 @@ const signup = () => {
         )}
       />
       {errors.fullName && <Text>{errors.fullName.message}</Text>}
-      <Text>Email Address: </Text>
+      <Text style={styles.label}>Email Address: </Text>
       <Controller
         control={control}
         name="email"
@@ -95,7 +95,7 @@ const signup = () => {
         )}
       />
       {errors.email && <Text>{errors.email.message}</Text>}
-      <Text>Password</Text>
+      <Text style={styles.label}>Password</Text>
       <Controller
         control={control}
         name="password"
@@ -112,7 +112,7 @@ const signup = () => {
         )}
       />
       {errors.password && <Text>{errors.password.message}</Text>}
-      <Text>Confirm Password</Text>
+      <Text style={styles.label}>Confirm Password</Text>
       <Controller
         control={control}
         name="confirmPassword"
@@ -129,13 +129,13 @@ const signup = () => {
         )}
       />
       {errors.confirmPassword && <Text>{errors.confirmPassword.message}</Text>}
-      <Pressable onPress={handleSubmit(onSubmit)}>
+      <Pressable onPress={handleSubmit(onSubmit)} style={styles.button}>
         <Text>Sign Up!</Text>
       </Pressable>
       <Text>
-        Already have an account?{" "}
-        <Pressable onPress={() => router.push("/(tab)/log/index")}>
-          Log In.
+        Already have an account?
+        <Pressable onPress={() => router.back()}>
+          <u>Log In.</u>
         </Pressable>
       </Text>
     </ScrollView>
@@ -145,5 +145,36 @@ const signup = () => {
 export default signup;
 
 const styles = StyleSheet.create({
-  input: {},
+  header: {},
+  label: {
+    marginLeft: 15,
+  },
+  input: {
+    backgroundColor: "#d3d3d3",
+    marginLeft: 15,
+    marginRight: 15,
+    margin: 5,
+    padding: 5,
+    borderRadius: 5,
+  },
+  error: {
+    backgroundColor: "red",
+    color: "white",
+    padding: 5,
+    marginLeft: 15,
+    marginRight: 15,
+    borderRadius: 5,
+  },
+  formComponent: {},
+  button: {
+    marginLeft: 15,
+    backgroundColor: "violet",
+    padding: 10,
+    borderRadius: 10,
+    alignSelf: "flex-start",
+  },
+  buttonText: {},
+  navigation: {
+    color: "blue",
+  },
 });
