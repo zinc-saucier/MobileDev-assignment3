@@ -19,7 +19,7 @@ import z from "zod";
 //campus hub week 9 has all the zod fields we need, please look at it.
 
 const loginSchema = z.object({
-  email: z.email(),
+  email: z.string().email(),
   password: z.string().min(8),
 });
 
