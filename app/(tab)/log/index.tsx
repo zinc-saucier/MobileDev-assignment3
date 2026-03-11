@@ -100,7 +100,7 @@ const login = () => {
         Don't have an account?{" "}
         <Pressable onPress={() => router.push("/(tab)/log/signup")}>
           {" "}
-          Sign up
+          <u>Sign up</u>
         </Pressable>
       </Text>
     </ScrollView>
