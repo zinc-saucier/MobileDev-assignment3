@@ -3,12 +3,12 @@ import { router } from "expo-router";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
-    Alert,
-    Pressable,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput
+  Alert,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
 } from "react-native";
 import z from "zod";
 import { theme } from "../../../styles/theme";
@@ -69,11 +69,10 @@ const login = () => {
             autoCapitalize="none"
           />
         )}
-<<<<<<< HEAD
       />
       {errors.email && <Text style={styles.error}>{errors.email.message}</Text>}
 
-      <Text style={styles.label}>Password</Text>
+      <Text style={styles.label}>Password: </Text>
       <Controller
         control={control}
         name="password"
@@ -94,28 +93,6 @@ const login = () => {
         <Text style={styles.error}>{errors.password.message}</Text>
       )}
 
-=======
-      </View>
-      <View style={styles.formComponent}>
-        <Text style={styles.label}>Password: </Text>
-        <Controller
-          control={control}
-          name="password"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={[styles.input]}
-              placeholder=""
-              placeholderTextColor={""}
-              value={value}
-              onChange={onChange}
-              keyboardType="visible-password"
-              autoCapitalize="none"
-              textContentType="password"
-            />
-          )}
-        />
-      </View>
->>>>>>> c9a23ae (formatting)
       <Pressable style={styles.button} onPress={handleSubmit(onSubmit)}>
         <Text style={styles.buttonText}>Log In</Text>
       </Pressable>
