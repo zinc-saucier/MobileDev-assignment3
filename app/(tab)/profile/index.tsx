@@ -1,15 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { router } from "expo-router";
 import React from "react";
+import { StyleSheet, Text, View, ScrollView, TextInput, Pressable, Alert } from "react-native";
+import { router } from "expo-router";
 import { Controller, useForm } from "react-hook-form";
-import {
-  Alert,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-} from "react-native";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 //app-wide theme file
 //import {theme} from "../../../../styles/theme"
@@ -43,10 +38,11 @@ type EmployeeForm = z.infer<typeof formSchema>;
 //the large 5 field form goes here!
 
 const form = () => {
+
   const {
     control,
     handleSubmit,
-
+   
     formState: { errors, isValid },
   } = useForm<EmployeeForm>({
     resolver: zodResolver(formSchema),
