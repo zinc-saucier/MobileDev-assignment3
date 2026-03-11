@@ -107,10 +107,32 @@ export default login;
 const styles = StyleSheet.create({
   loginContainer: {},
   header: {},
-  label: {},
-  input: {},
-  error: {},
+  label: {
+    marginLeft: 15,
+  },
+  input: {
+    backgroundColor: "#d3d3d3",
+    marginLeft: 15,
+    marginRight: 15,
+    margin: 5,
+    padding: 5,
+    borderRadius: 5,
+  },
+  error: {
+    backgroundColor: "red",
+    color: "white",
+    padding: 5,
+    marginLeft: 15,
+    marginRight: 15,
+    borderRadius: 5,
+  },
   formComponent: {},
-  button: {},
+  button: {
+    marginLeft: 15,
+    backgroundColor: "violet",
+    padding: 10,
+    borderRadius: 10,
+    alignSelf: "flex-start",
+  },
   buttonText: {},
 });
