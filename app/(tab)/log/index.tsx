@@ -143,7 +143,10 @@ const styles = StyleSheet.create({
     marginRight: 15,
     borderRadius: 5,
   },
-  content: {},
+  content: {
+    flex: 1,
+    alignContent: "center",
+  },
   button: {
     marginLeft: 15,
     backgroundColor: "violet",

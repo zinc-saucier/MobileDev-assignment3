@@ -194,7 +194,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.bg,
   },
-  content: {},
+  content: {
+    flex: 1,
+    alignContent: "center",
+  },
   h1: {
     fontSize: 25,
     fontWeight: "600",
