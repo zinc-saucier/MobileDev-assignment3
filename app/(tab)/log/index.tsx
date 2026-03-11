@@ -106,7 +106,12 @@ export default login;
 
 const styles = StyleSheet.create({
   loginContainer: {},
-  header: {},
+  header: {
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 5,
+  },
   label: {
     marginLeft: 15,
   },
