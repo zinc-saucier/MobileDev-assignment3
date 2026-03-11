@@ -5,14 +5,13 @@ import { Controller, useForm } from "react-hook-form";
 import {
     Alert,
     Pressable,
+    ScrollView,
     StyleSheet,
     Text,
-    TextInput,
-    View,
-    ScrollView,
+    TextInput
 } from "react-native";
 import z from "zod";
-import {theme} from "../../../styles/theme"
+import { theme } from "../../../styles/theme";
 
 //Home screen is an immediate log in screen.
 //I have hopefully set up stack navigation that can be used to add the sign up form here too.
@@ -43,56 +42,57 @@ const login = () => {
   });
 
   const onSubmit = (data: logInForm) => {
-    Alert.alert("logged in!", `welcome back ${data.email}`, 
-      [{ text: "OK", onPress: () => router.back()},
+    Alert.alert("logged in!", `welcome back ${data.email}`, [
+      { text: "OK", onPress: () => router.back() },
     ]);
-    console.log(data)
+    console.log(data);
   };
   return (
-    <ScrollView style={styles.loginContainer} contentContainerStyle={styles.content}>
+    <ScrollView
+      style={styles.loginContainer}
+      contentContainerStyle={styles.content}
+    >
       <Text style={styles.header}>Login</Text>
-      
-        <Text style={styles.label}>Email: </Text>
-        <Controller
-          control={control}
-          name="email"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={[styles.input]}
-              placeholder="example@example.ex"
-              placeholderTextColor={theme.colors.muted}
-              value={value}
-              onChangeText={onChange}
-              keyboardType="email-address"
-              autoCapitalize="none"
-            />
-          )}
-        />
-        {errors.email && (
-          <Text style={styles.error}>{errors.email.message}</Text>
+
+      <Text style={styles.label}>Email: </Text>
+      <Controller
+        control={control}
+        name="email"
+        render={({ field: { onChange, value } }) => (
+          <TextInput
+            style={[styles.input]}
+            placeholder="example@example.ex"
+            placeholderTextColor={theme.colors.muted}
+            value={value}
+            onChangeText={onChange}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
         )}
-      
-        <Text style={styles.label}>Password</Text>
-        <Controller
-          control={control}
-          name="password"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={[styles.input]}
-              placeholder=""
-              placeholderTextColor={""}
-              value={value}
-              onChangeText={onChange}
-              keyboardType="visible-password"
-              autoCapitalize="none"
-              textContentType="password"
-            />
-          )}
-        />
-        {errors.password && (
-          <Text style={styles.error}>{errors.password.message}</Text>
+      />
+      {errors.email && <Text style={styles.error}>{errors.email.message}</Text>}
+
+      <Text style={styles.label}>Password</Text>
+      <Controller
+        control={control}
+        name="password"
+        render={({ field: { onChange, value } }) => (
+          <TextInput
+            style={[styles.input]}
+            placeholder=""
+            placeholderTextColor={""}
+            value={value}
+            onChangeText={onChange}
+            keyboardType="visible-password"
+            autoCapitalize="none"
+            textContentType="password"
+          />
         )}
-      
+      />
+      {errors.password && (
+        <Text style={styles.error}>{errors.password.message}</Text>
+      )}
+
       <Pressable style={styles.button} onPress={handleSubmit(onSubmit)}>
         <Text style={styles.buttonText}>Log In</Text>
       </Pressable>
@@ -112,12 +112,14 @@ export default login;
 const styles = StyleSheet.create({
   loginContainer: {
     flex: 1,
-    backgroundColor: theme.colors.bg,},
+    backgroundColor: theme.colors.bg,
+  },
   header: {
     fontSize: 25,
     fontWeight: "600",
     margin: 15,
     marginTop: 35,
+    textAlign: "center",
   },
   label: {
     marginLeft: theme.label.margin,

@@ -62,7 +62,8 @@ const signup = () => {
   };
   return (
     <ScrollView>
-      <Text style={styles.header}>Create your profile</Text>
+      <Text style={styles.header}>Create your profile:</Text>
+
       <Text style={styles.label}>Full Name</Text>
       <Controller
         control={control}
@@ -134,7 +135,7 @@ const signup = () => {
       </Pressable>
       <Text>
         Already have an account?
-        <Pressable onPress={() => router.back()}>
+        <Pressable onPress={() => router.navigate("/(tab)/profile/index")}>
           <u>Log In.</u>
         </Pressable>
       </Text>
@@ -145,7 +146,12 @@ const signup = () => {
 export default signup;
 
 const styles = StyleSheet.create({
-  header: {},
+  header: {
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 5,
+  },
   label: {
     marginLeft: 15,
   },
