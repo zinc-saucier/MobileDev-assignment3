@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import { z } from "zod";
 //app-wide theme file
-//import {theme} from "../../../../styles/theme"
+import {theme} from "../../../styles/theme";
 
 //form field validation goes here!
 
@@ -186,19 +186,28 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignSelf: "flex-start",
   },
-  buttonText: {},
+  buttonText: {
+    color: "#000000",
+  },
+  container: {
+    flex: 1,
+    backgroundColor: theme.colors.bg,
+  },
   content: {},
-  container: {},
   h1: {
     fontSize: 25,
+    fontWeight: "600",
     margin: 15,
     marginTop: 35,
+   
   },
   label: {
-    marginLeft: 15,
+    marginLeft: theme.label.margin,
+    fontSize: theme.label.size,
+    fontWeight: "400",
   },
   input: {
-    backgroundColor: "#d3d3d3",
+    backgroundColor: theme.colors.bg,
     marginLeft: 15,
     marginRight: 15,
     margin: 5,
