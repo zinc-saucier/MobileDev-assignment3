@@ -1,3 +1,5 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { router } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, View, ScrollView, TextInput, Pressable, Alert } from "react-native";
 import { router } from "expo-router";
@@ -10,12 +12,26 @@ import { z } from "zod";
 //form field validation goes here!
 
 const formSchema = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  email: z.email(),
-  phone: z.string(),
-  postCode: z.string(),
-})
+  firstName: z
+    .string()
+    .trim()
+    .min(2, "First name must be at least 2 characters."),
+  lastName: z
+    .string()
+    .trim()
+    .min(2, "Last name must be at least 2 characters."),
+  email: z.string().trim().email("Enter a valid email address."),
+  phone: z
+    .string()
+    .refine(
+      (val) => val.replace(/\D/g, "").length >= 10,
+      "Phone number must have 10 digits.",
+    ),
+  postCode: z
+    .string()
+    .trim()
+    .regex(/^[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d$/, "Enter a valid postal code"),
+});
 
 type EmployeeForm = z.infer<typeof formSchema>;
 
@@ -41,14 +57,16 @@ const form = () => {
   });
 
   const onSubmit = (data: EmployeeForm) => {
-    Alert.alert("Form submitted", "Your information has been updated.", [
-      { text: `${data}`, onPress: () => router.back() },
-    ]);
-  }
+    Alert.alert(
+      "Form submitted",
+      `Employee: ${data.firstName} ${data.lastName}`,
+      [{ text: "OK", onPress: () => router.back() }],
+    );
+  };
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-        <Text style={styles.h1}>Employee Profile</Text>
+      <Text style={styles.h1}>Employee Profile</Text>
       {/*First Name */}
       <Text style={styles.label}>First Name</Text>
       <Controller
@@ -58,13 +76,16 @@ const form = () => {
           <TextInput
             style={[styles.input]}
             placeholder="first name here"
-            placeholderTextColor={""}
+            placeholderTextColor={"gray"}
             value={value}
-            onChange={onChange}
+            onChangeText={onChange}
             autoCapitalize="words"
           />
         )}
       />
+      {errors.firstName && (
+        <Text style={styles.error}>{errors.firstName.message}</Text>
+      )}
       {/*Last Name */}
       <Text style={styles.label}>Last Name</Text>
       <Controller
@@ -74,9 +95,9 @@ const form = () => {
           <TextInput
             style={[styles.input]}
             placeholder="last name here"
-            placeholderTextColor={""}
+            placeholderTextColor={"gray"}
             value={value}
-            onChange={onChange}
+            onChangeText={onChange}
             autoCapitalize="words"
           />
         )}
@@ -94,9 +115,9 @@ const form = () => {
           <TextInput
             style={[styles.input]}
             placeholder="example@example.com"
-            placeholderTextColor={""}
+            placeholderTextColor={"gray"}
             value={value}
-            onChange={onChange}
+            onChangeText={onChange}
             keyboardType="email-address"
             autoCapitalize="none"
           />
@@ -113,9 +134,9 @@ const form = () => {
           <TextInput
             style={[styles.input]}
             placeholder="(555) 555-5555"
-            placeholderTextColor={""}
+            placeholderTextColor={"gray"}
             value={value}
-            onChange={onChange}
+            onChangeText={onChange}
             keyboardType="phone-pad"
           />
         )}
@@ -131,9 +152,9 @@ const form = () => {
           <TextInput
             style={[styles.input]}
             placeholder="A1B 2C3"
-            placeholderTextColor={""}
+            placeholderTextColor={"gray"}
             value={value}
-            onChange={onChange}
+            onChangeText={onChange}
             autoCapitalize="characters"
             maxLength={9}
           />
@@ -142,29 +163,50 @@ const form = () => {
       {errors.postCode && (
         <Text style={styles.error}>{errors.postCode.message}</Text>
       )}
-      
+
       {/* submit button */}
-        <Pressable style={[styles.button]} 
-          onPress={handleSubmit(onSubmit)}>
-          <Text style={styles.buttonText}>Submit</Text>
-        </Pressable>
-        
-      
-   
-      
-      </ScrollView>
+      <Pressable style={[styles.button]} onPress={handleSubmit(onSubmit)}>
+        <Text style={styles.buttonText}>Submit</Text>
+      </Pressable>
+    </ScrollView>
   );
 };
 
 export default form;
 
 const styles = StyleSheet.create({
-  button: {},
+  button: {
+    marginLeft: 15,
+    backgroundColor: "violet",
+    padding: 10,
+    borderRadius: 10,
+    alignSelf: "flex-start",
+  },
   buttonText: {},
   content: {},
   container: {},
-  h1: {},
-  label: {},
-  input: {},
-  error: {},
+  h1: {
+    fontSize: 25,
+    margin: 15,
+    marginTop: 35,
+  },
+  label: {
+    marginLeft: 15,
+  },
+  input: {
+    backgroundColor: "#d3d3d3",
+    marginLeft: 15,
+    marginRight: 15,
+    margin: 5,
+    padding: 5,
+    borderRadius: 5,
+  },
+  error: {
+    backgroundColor: "red",
+    color: "white",
+    padding: 5,
+    marginLeft: 15,
+    marginRight: 15,
+    borderRadius: 5,
+  },
 });
