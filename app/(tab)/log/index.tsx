@@ -70,7 +70,7 @@ const login = () => {
         )}
       </View>
       <View style={styles.formComponent}>
-        <Text style={styles.label}>Password</Text>
+        <Text style={styles.label}>Password: </Text>
         <Controller
           control={control}
           name="password"
