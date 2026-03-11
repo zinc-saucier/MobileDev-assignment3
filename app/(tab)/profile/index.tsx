@@ -1,5 +1,3 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { router } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, View, ScrollView, TextInput, Pressable, Alert } from "react-native";
 import { router } from "expo-router";
@@ -156,7 +154,7 @@ const form = () => {
             value={value}
             onChangeText={onChange}
             autoCapitalize="characters"
-            maxLength={9}
+            maxLength={6}
           />
         )}
       />
