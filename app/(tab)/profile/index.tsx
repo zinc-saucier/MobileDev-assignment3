@@ -5,7 +5,7 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 //app-wide theme file
-import {theme} from "../../../../styles/theme";
+import {theme} from "../../../styles/theme";
 
 //form field validation goes here!
 
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#f8fafc",
+    backgroundColor: theme.colors.bg,
   },
   content: {},
   h1: {
@@ -196,12 +196,12 @@ const styles = StyleSheet.create({
    
   },
   label: {
-    marginLeft: 15,
-    fontSize: 16,
+    marginLeft: theme.label.margin,
+    fontSize: theme.label.size,
     fontWeight: "400",
   },
   input: {
-    backgroundColor: "#d3d3d3",
+    backgroundColor: theme.colors.bg,
     marginLeft: 15,
     marginRight: 15,
     margin: 5,
