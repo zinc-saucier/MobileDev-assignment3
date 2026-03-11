@@ -64,7 +64,7 @@ const signup = () => {
     <ScrollView>
       <Text style={styles.header}>Create your profile:</Text>
 
-      <Text style={styles.label}>Full Name</Text>
+      <Text style={styles.label}>Full Name: </Text>
       <Controller
         control={control}
         name="fullName"
@@ -96,7 +96,7 @@ const signup = () => {
         )}
       />
       {errors.email && <Text>{errors.email.message}</Text>}
-      <Text style={styles.label}>Password</Text>
+      <Text style={styles.label}>Password: </Text>
       <Controller
         control={control}
         name="password"
@@ -113,7 +113,7 @@ const signup = () => {
         )}
       />
       {errors.password && <Text>{errors.password.message}</Text>}
-      <Text style={styles.label}>Confirm Password</Text>
+      <Text style={styles.label}>Confirm Password: </Text>
       <Controller
         control={control}
         name="confirmPassword"

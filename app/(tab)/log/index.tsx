@@ -69,6 +69,7 @@ const login = () => {
             autoCapitalize="none"
           />
         )}
+<<<<<<< HEAD
       />
       {errors.email && <Text style={styles.error}>{errors.email.message}</Text>}
 
@@ -93,6 +94,28 @@ const login = () => {
         <Text style={styles.error}>{errors.password.message}</Text>
       )}
 
+=======
+      </View>
+      <View style={styles.formComponent}>
+        <Text style={styles.label}>Password: </Text>
+        <Controller
+          control={control}
+          name="password"
+          render={({ field: { onChange, value } }) => (
+            <TextInput
+              style={[styles.input]}
+              placeholder=""
+              placeholderTextColor={""}
+              value={value}
+              onChange={onChange}
+              keyboardType="visible-password"
+              autoCapitalize="none"
+              textContentType="password"
+            />
+          )}
+        />
+      </View>
+>>>>>>> c9a23ae (formatting)
       <Pressable style={styles.button} onPress={handleSubmit(onSubmit)}>
         <Text style={styles.buttonText}>Log In</Text>
       </Pressable>
