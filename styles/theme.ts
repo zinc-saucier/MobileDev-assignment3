@@ -6,7 +6,8 @@ export const theme = {
     primary: "#2563eb",
     border: "#e5e7eb",
     error: "#dc2626",
-    button: "violet"
+    button: "violet",
+    inputbg: "gray",
   },
  label: {
   margin: 15,

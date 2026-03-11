@@ -64,8 +64,9 @@ const form = () => {
     Alert.alert(
       "Form submitted",
       `Employee: ${data.firstName} ${data.lastName}`,
-      [{ text: "OK", onPress: () => router.back() }],
-    );
+      [{ text: "OK", onPress: () => router.back()} 
+      ]);
+      console.log(data)
   };
 
   return (
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
   },
   buttonText: {
-    color: "#000000",
+    color: theme.colors.text,
   },
   container: {
     flex: 1,
@@ -207,12 +208,13 @@ const styles = StyleSheet.create({
     fontWeight: "400",
   },
   input: {
-    backgroundColor: theme.colors.bg,
+    backgroundColor: theme.colors.border,
     marginLeft: 15,
     marginRight: 15,
     margin: 5,
     padding: 5,
     borderRadius: 5,
+    borderWidth: 1,
   },
   error: {
     backgroundColor: "red",
