@@ -35,7 +35,7 @@ const passwordSchema = z
 const signupSchema = z
   .object({
     fullName: z.string().min(3, "full name must be at least 3 characters"),
-    email: z.email("Enter a valid email address.").trim(),
+    email: z.string().email("Enter a valid email address.").trim(),
     password: passwordSchema,
     confirmPassword: z.string(),
   })
